@@ -1,52 +1,214 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!DOCTYPE html><html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Săn Deal Giá Rẻ - Ưu Đãi Mỗi Ngày</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f6fa;color:#222}
-header{background:#ee4d2d;color:white;padding:20px 15px}
-header h1{margin:0;font-size:25px}
-header p{margin:8px 0 0}
-.container{max-width:1100px;margin:auto;padding:15px}
-.search{width:100%;padding:13px;border:1px solid #ddd;border-radius:9px;font-size:16px}
-h2{font-size:20px;margin:22px 0 15px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px #00000012}
-.card img{width:100%;height:165px;object-fit:contain;background:white}
-.info{padding:10px}
-.name{font-size:14px;line-height:1.4;min-height:40px}
-.price{color:#ee4d2d;font-size:19px;font-weight:bold;margin-top:8px}
-.old{font-size:12px;color:#999;text-decoration:line-through;margin-top:5px}
-.desc{font-size:12px;color:#777;margin-top:8px;line-height:1.5}
-.buy{display:block;background:#ee4d2d;color:white;text-decoration:none;text-align:center;padding:11px 5px;border-radius:6px;margin-top:12px;font-weight:bold}
-.status{text-align:center;padding:25px;color:#555}
-footer{text-align:center;padding:22px;color:#777;font-size:12px;line-height:1.6}
-@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-</style>
-</head>
-<body>
+<title>Săn Deal Giá Rẻ - Ưu Đãi Mỗi Ngày</title><style>
+* {
+  box-sizing: border-box;
+}
 
-<header>
-<h1>🛍️ SĂN DEAL GIÁ RẺ</h1>
-<p>Săn ưu đãi hấp dẫn mỗi ngày!</p>
-</header>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+  color: #222;
+}
 
-<main class="container">
-<input id="search" class="search" type="search" placeholder="🔎 Tìm kiếm sản phẩm...">
-<h2>🔥 Sản phẩm ưu đãi</h2>
-<div id="status" class="status">Đang tải sản phẩm...</div>
-<div id="products" class="grid"></div>
-</main>
+header {
+  background: #ee4d2d;
+  color: white;
+  padding: 16px 12px;
+}
 
-<footer>
-© 2026 Săn Deal Giá Rẻ<br>
-Website tiếp thị liên kết. Chúng tôi có thể nhận hoa hồng từ các giao dịch đủ điều kiện. Giá và ưu đãi có thể thay đổi theo Shopee.
-</footer>
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
 
-<script>
+header p {
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 12px;
+}
+
+.search {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  font-size: 15px;
+  outline: none;
+  background: white;
+}
+
+.search:focus {
+  border-color: #ee4d2d;
+}
+
+h2 {
+  font-size: 19px;
+  margin: 18px 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.card {
+  min-width: 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 7px #00000010;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  background: white;
+  padding: 4px;
+}
+
+.info {
+  padding: 9px;
+}
+
+.name {
+  font-size: 13px;
+  line-height: 1.4;
+  height: 36.4px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: anywhere;
+}
+
+.price {
+  color: #ee4d2d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+}
+
+.old {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+  margin-top: 4px;
+}
+
+.desc {
+  font-size: 12px;
+  color: #777;
+  margin-top: 7px;
+  line-height: 1.45;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  min-height: 0;
+}
+
+.buy {
+  display: block;
+  background: #ee4d2d;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 4px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.buy:active {
+  opacity: 0.8;
+}
+
+.status {
+  text-align: center;
+  padding: 20px 10px;
+  color: #555;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 18px 12px;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (min-width: 650px) {
+  .container {
+    padding: 18px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .info {
+    padding: 12px;
+  }
+
+  .name {
+    font-size: 14px;
+    height: 39.2px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .buy {
+    font-size: 14px;
+    padding: 11px 6px;
+  }
+}
+</style></head><body><header>
+  <h1>🛍️ SĂN DEAL GIÁ RẺ</h1>
+  <p>Săn ưu đãi hấp dẫn mỗi ngày!</p>
+</header><main class="container"><input
+id="search"
+class="search"
+type="search"
+placeholder="🔎 Tìm kiếm sản phẩm..."
+aria-label="Tìm kiếm sản phẩm"
+
+«»
+
+  <h2>🔥 Sản phẩm ưu đãi</h2>  <div id="status" class="status">Đang tải sản phẩm...</div>  <div id="products" class="grid"></div></main><footer>
+  © 2026 Săn Deal Giá Rẻ<br>
+  Website tiếp thị liên kết. Chúng tôi có thể nhận hoa hồng từ các giao dịch đủ điều kiện. Giá và ưu đãi có thể thay đổi theo Shopee.
+</footer><script>
 const SUPABASE_URL = "https://wnecnwgsctxfeednhheb.supabase.co";
 const SUPABASE_KEY = "sb_publishable_VXyRnLXPughqDP6PK7-NDQ_2BU4Lf1r";
 
@@ -56,30 +218,40 @@ const searchBox = document.getElementById("search");
 
 let allProducts = [];
 
-function money(value){
-  if(value === null || value === undefined || value === "") return "";
+function money(value) {
+  if (value === null || value === undefined || value === "") {
+    return "";
+  }
+
   const n = Number(value);
+
   return Number.isFinite(n)
     ? n.toLocaleString("vi-VN") + "đ"
     : String(value);
 }
 
-function safeUrl(value){
+function safeUrl(value) {
   try {
     const u = new URL(value);
-    if(u.protocol === "https:" || u.protocol === "http:") return u.href;
-  } catch(e){}
+
+    if (u.protocol === "https:" || u.protocol === "http:") {
+      return u.href;
+    }
+  } catch (e) {}
+
   return "";
 }
 
-function render(items){
+function render(items) {
   productBox.replaceChildren();
 
-  if(!items.length){
+  if (!items.length) {
     statusBox.style.display = "block";
+
     statusBox.textContent = allProducts.length
       ? "Không tìm thấy sản phẩm phù hợp."
       : "Chưa có sản phẩm nào.";
+
     return;
   }
 
@@ -90,12 +262,18 @@ function render(items){
     card.className = "card";
 
     const imgUrl = safeUrl(p.image_url);
-    if(imgUrl){
+
+    if (imgUrl) {
       const img = document.createElement("img");
+
       img.src = imgUrl;
       img.alt = p.name || "Sản phẩm";
       img.loading = "lazy";
-      img.onerror = () => { img.style.display = "none"; };
+
+      img.onerror = () => {
+        img.style.display = "none";
+      };
+
       card.appendChild(img);
     }
 
@@ -112,30 +290,39 @@ function render(items){
 
     info.append(name, price);
 
-    if(p.original_price !== null &&
-       p.original_price !== undefined &&
-       p.original_price !== ""){
+    if (
+      p.original_price !== null &&
+      p.original_price !== undefined &&
+      p.original_price !== ""
+    ) {
       const old = document.createElement("div");
+
       old.className = "old";
       old.textContent = money(p.original_price);
+
       info.appendChild(old);
     }
 
-    if(p.description){
+    if (p.description) {
       const desc = document.createElement("div");
+
       desc.className = "desc";
       desc.textContent = p.description;
+
       info.appendChild(desc);
     }
 
     const aff = safeUrl(p.affiliate_url);
-    if(aff){
+
+    if (aff) {
       const buy = document.createElement("a");
+
       buy.className = "buy";
       buy.href = aff;
       buy.target = "_blank";
       buy.rel = "noopener noreferrer sponsored";
       buy.textContent = "MUA NGAY 🛒";
+
       info.appendChild(buy);
     }
 
@@ -144,7 +331,7 @@ function render(items){
   });
 }
 
-async function loadProducts(){
+async function loadProducts() {
   statusBox.style.display = "block";
   statusBox.textContent = "Đang tải sản phẩm...";
 
@@ -159,29 +346,36 @@ async function loadProducts(){
       }
     });
 
-    if(!response.ok){
+    if (!response.ok) {
       const detail = await response.text();
+
       console.error("Supabase error:", detail);
+
       throw new Error("Lỗi Supabase (" + response.status + ").");
     }
 
     allProducts = await response.json();
+
     render(allProducts);
-  } catch(err) {
+
+  } catch (err) {
     statusBox.textContent =
       "Không tải được sản phẩm. Hãy kiểm tra tên cột và quyền đọc bảng products trong Supabase.";
+
     console.error(err);
   }
 }
 
 searchBox.addEventListener("input", () => {
   const q = searchBox.value.trim().toLocaleLowerCase("vi");
-  render(allProducts.filter(p =>
-    String(p.name || "").toLocaleLowerCase("vi").includes(q)
-  ));
+
+  render(
+    allProducts.filter(p =>
+      String(p.name || "").toLocaleLowerCase("vi").includes(q)
+    )
+  );
 });
 
 loadProducts();
-</script>
-</body>
+</script></body>
 </html>
