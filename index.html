@@ -108,7 +108,7 @@ function render(items){
 
     const price = document.createElement("div");
     price.className = "price";
-    price.textContent = money(p.price);
+    price.textContent = money(p.sale_price);
 
     info.append(name, price);
 
@@ -150,7 +150,7 @@ async function loadProducts(){
 
   try {
     const endpoint = SUPABASE_URL +
-      "/rest/v1/products?select=id,name,image_url,original_price,price,affiliate_url,description,created_at&order=created_at.desc";
+      "/rest/v1/products?select=id,name,image_url,original_price,sale_price,affiliate_url,description,created_at&order=created_at.desc";
 
     const response = await fetch(endpoint, {
       headers: {
@@ -161,7 +161,8 @@ async function loadProducts(){
 
     if(!response.ok){
       const detail = await response.text();
-      throw new Error("Lỗi Supabase (" + response.status + "). " + detail);
+      console.error("Supabase error:", detail);
+      throw new Error("Lỗi Supabase (" + response.status + ").");
     }
 
     allProducts = await response.json();
