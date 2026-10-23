@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Săn Deal Giá Rẻ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#333}
+header{background:#ee4d2d;color:white;padding:20px 12px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.search{padding:15px;background:white}
+.search input{width:100%;padding:13px;border:1px solid #ddd;border-radius:8px;font-size:16px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:white}
+nav button{padding:10px 15px;border:0;border-radius:20px;background:#fff0eb;color:#ee4d2d;white-space:nowrap}
+nav button.active{background:#ee4d2d;color:white}
+.banner{margin:15px;padding:25px 15px;background:linear-gradient(120deg,#ff6a00,#ee4d2d);color:white;border-radius:12px}
+.banner h2{margin:0 0 8px}
+main{padding:10px}
+.section-title{font-size:20px;font-weight:bold;margin:10px 5px 15px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px #00000010}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#eee}
+.info{padding:10px}
+.name{font-size:14px;line-height:1.4;height:40px;overflow:hidden}
+.price{color:#ee4d2d;font-weight:bold;font-size:18px;margin:9px 0}
+.old{font-size:12px;color:#999;text-decoration:line-through;font-weight:normal}
+.buy{display:block;text-align:center;text-decoration:none;background:#ee4d2d;color:white;padding:11px 5px;border-radius:6px;font-weight:bold;font-size:14px}
+footer{text-align:center;padding:25px 15px;color:#777;font-size:13px;line-height:1.7}
+.empty{text-align:center;padding:30px;grid-column:1/-1}
+</style>
+</head>
+<body><header>
+<h1>🔥 SĂN DEAL GIÁ RẺ</h1>
+<p>Săn deal mỗi ngày – Mua sắm tiết kiệm!</p>
+</header><div class="search">
+<input id="search" type="search" placeholder="🔎 Tìm sản phẩm bạn cần..." oninput="renderProducts()">
+</div><nav id="categories">
+<button class="active" onclick="setCategory('Tất cả',this)">Tất cả</button>
+<button onclick="setCategory('Gia dụng',this)">🏠 Gia dụng</button>
+<button onclick="setCategory('Điện tử',this)">📱 Điện tử</button>
+<button onclick="setCategory('Thời trang',this)">👕 Thời trang</button>
+<button onclick="setCategory('Làm đẹp',this)">💄 Làm đẹp</button>
+</nav><div class="banner">
+<h2>⚡ DEAL HOT MỖI NGÀY</h2>
+<p>Khám phá sản phẩm hữu ích với mức giá hấp dẫn!</p>
+<strong>🛒 Chọn sản phẩm và bấm MUA NGAY</strong>
+</div><main>
+<div class="section-title">🛍️ Sản phẩm nổi bật</div>
+<div class="products" id="products"></div>
+</main><footer>
+<p><strong>SĂN DEAL GIÁ RẺ</strong></p>
+<p>Website chia sẻ sản phẩm và ưu đãi mua sắm.</p>
+<p>Chúng tôi có thể nhận hoa hồng khi bạn mua hàng qua liên kết tiếp thị liên kết hợp lệ. Giá bán và ưu đãi có thể thay đổi theo Shopee.</p>
+<p>© 2026 Săn Deal Giá Rẻ</p>
+</footer><script>
+const products = [
+{
+name:"Giá đỡ điện thoại tiện lợi",
+price:"39.000đ",old:"79.000đ",
+category:"Điện tử",
+image:"https://images.unsplash.com/photo- wobble",
+url:"https://shopee.vn/"
+},
+{
+name:"Tripod 3 chân chụp ảnh điện thoại",
+price:"89.000đ",old:"159.000đ",
+category:"Điện tử",
+image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80",
+url:"https://shopee.vn/"
+},
+{
+name:"Hộp đựng đồ gia dụng đa năng",
+price:"49.000đ",old:"99.000đ",
+category:"Gia dụng",
+image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=500&q=80",
+url:"https://shopee.vn/"
+},
+{
+name:"Đèn bàn học để bàn",
+price:"69.000đ",old:"129.000đ",
+category:"Gia dụng",
+image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80",
+url:"https://shopee.vn/"
+},
+{
+name:"Balo thời trang tiện dụng",
+price:"119.000đ",old:"199.000đ",
+category:"Thời trang",
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80",
+url:"https://shopee.vn/"
+},
+{
+name:"Dụng cụ chăm sóc cá nhân",
+price:"59.000đ",old:"99.000đ",
+category:"Làm đẹp",
+image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80",
+url:"https://shopee.vn/"
+}
+];
+
+let selectedCategory="Tất cả";
+
+function setCategory(category,button){
+selectedCategory=category;
+document.querySelectorAll("#categories button").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+renderProducts();
+}
+
+function renderProducts(){
+const keyword=document.getElementById("search").value.toLowerCase().trim();
+const filtered=products.filter(p=>
+p.name.toLowerCase().includes(keyword)&&
+(selectedCategory==="Tất cả"||p.category===selectedCategory)
+);
+const container=document.getElementById("products");
+if(!filtered.length){
+container.innerHTML='<div class="empty">Không tìm thấy sản phẩm phù hợp.</div>';
+return;
+}
+container.innerHTML=filtered.map(p=>`
+<div class="card">
+<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+<div class="info">
+<div class="name">${p.name}</div>
+<div class="price">${p.price} <span class="old">${p.old}</span></div>
+<a class="buy" href="${p.url}" target="_blank" rel="noopener noreferrer">🛒 MUA NGAY</a>
+</div>
+</div>`).join("");
+}
+renderProducts();
+</script></body>
+</html>
